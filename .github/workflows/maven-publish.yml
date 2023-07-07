@@ -48,6 +48,7 @@ jobs:
         script: |
           cd /home/david/deployments
           export KUBECONFIG=/etc/rancher/rke2/rke.yaml
-          kubectl apply -f smsmanager.yaml -n default
+          kubectl delete -f googletest.yaml -n default
+          kubectl create -f googletest.yaml -n default
           exit 0
 
