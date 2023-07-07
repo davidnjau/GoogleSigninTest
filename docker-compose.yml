@@ -1,0 +1,25 @@
+version: "3.5"
+services:
+  google_signin:
+    image: davidnjau21/google_signin_image:latest
+    ports:
+      - "7001:7001"
+    volumes:
+      - .:/javabackend
+    deploy:
+      update_config:
+        parallelism: 1
+        max_failure_ratio: 0
+        delay: 3s
+        failure_action: rollback
+      restart_policy:
+        max_attempts: 3
+        condition: on-failure
+      replicas: 3
+      placement:
+        constraints: [ node.role == manager ]
+    networks:
+      - google_signin
+networks:
+  google_signin:
+    external: true

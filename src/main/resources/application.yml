@@ -1,0 +1,16 @@
+server:
+  port: 7001
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 424988144946-s345k5ahqomgtd5cffo16lmd6pd1qpnf.apps.googleusercontent.com
+            client-secret: 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
+            scope: openid,profile,email
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
+          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
